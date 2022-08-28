@@ -22,9 +22,11 @@ import {
 	isBlock,
 	getNearest,
 	getPreviousBlock,
+	split,
+	fixCursor,
                     } from './Node';
 
-var getNodeBefore = function ( node, offset ) {
+export function getNodeBefore ( node, offset ) {
     var children = node.childNodes;
     while ( offset && node.nodeType === ELEMENT_NODE ) {
         node = children[ offset - 1 ];
@@ -34,7 +36,7 @@ var getNodeBefore = function ( node, offset ) {
     return node;
 };
 
-var getNodeAfter = function ( node, offset ) {
+export function getNodeAfter ( node, offset ) {
     if ( node.nodeType === ELEMENT_NODE ) {
         var children = node.childNodes;
         if ( offset < children.length ) {
@@ -105,7 +107,7 @@ export function insertNodeInRange( range, node ) {
     range.setEnd( endContainer, endOffset );
 };
 
-var extractContentsOfRange = function ( range, common, root ) {
+export function extractContentsOfRange ( range, common, root ) {
     var startContainer = range.startContainer,
         startOffset = range.startOffset,
         endContainer = range.endContainer,
@@ -167,7 +169,7 @@ var extractContentsOfRange = function ( range, common, root ) {
     return frag;
 };
 
-var deleteContentsOfRange = function ( range, root ) {
+export function deleteContentsOfRange ( range, root ) {
     var startBlock = getStartBlockOfRange( range, root );
     var endBlock = getEndBlockOfRange( range, root );
     var needsMerge = ( startBlock !== endBlock );
@@ -213,7 +215,7 @@ var deleteContentsOfRange = function ( range, root ) {
 
 // Contents of range will be deleted.
 // After method, range will be around inserted content
-var insertTreeFragmentIntoRange = function ( range, frag, root ) {
+export function insertTreeFragmentIntoRange ( range, frag, root ) {
     var firstInFragIsInline = frag.firstChild && isInline( frag.firstChild );
     var node, block, blockContentsAfterSplit, stopPoint, container, offset;
     var replaceBlock, firstBlockInFrag, nodeAfterSplit, nodeBeforeSplit;
@@ -360,7 +362,7 @@ export function isNodeContainedInRange( range, node, partial ) {
     }
 };
 
-var moveRangeBoundariesDownTree = function ( range ) {
+export function moveRangeBoundariesDownTree ( range ) {
     var startContainer = range.startContainer,
         startOffset = range.startOffset,
         endContainer = range.endContainer,
@@ -412,7 +414,7 @@ var moveRangeBoundariesDownTree = function ( range ) {
     }
 };
 
-var moveRangeBoundariesUpTree = function ( range, startMax, endMax, root ) {
+export function moveRangeBoundariesUpTree ( range, startMax, endMax, root ) {
     var startContainer = range.startContainer;
     var startOffset = range.startOffset;
     var endContainer = range.endContainer;
@@ -458,7 +460,7 @@ var moveRangeBoundariesUpTree = function ( range, startMax, endMax, root ) {
     range.setEnd( endContainer, endOffset );
 };
 
-var moveRangeBoundaryOutOf = function ( range, nodeName, root ) {
+export function moveRangeBoundaryOutOf( range, nodeName, root ) {
     var parent = getNearest( range.endContainer, root, 'A' );
     if ( parent ) {
         var clone = range.cloneRange();
@@ -493,7 +495,7 @@ export function getStartBlockOfRange( range, root ) {
 
 // Returns the last block at least partially contained by the range,
 // or null if no block is contained by the range.
-var getEndBlockOfRange = function ( range, root ) {
+export function getEndBlockOfRange( range, root ) {
     var container = range.endContainer,
         block, child;
 
@@ -525,7 +527,7 @@ var contentWalker = new TreeWalker( null,
     }
 );
 
-var rangeDoesStartAtBlockBoundary = function ( range, root ) {
+export function rangeDoesStartAtBlockBoundary( range, root ) {
     var startContainer = range.startContainer;
     var startOffset = range.startOffset;
     var nodeAfterCursor;
@@ -559,7 +561,7 @@ var rangeDoesStartAtBlockBoundary = function ( range, root ) {
     return !contentWalker.previousNode();
 };
 
-var rangeDoesEndAtBlockBoundary = function ( range, root ) {
+export function rangeDoesEndAtBlockBoundary ( range, root ) {
     var endContainer = range.endContainer,
         endOffset = range.endOffset,
         length;
@@ -583,7 +585,7 @@ var rangeDoesEndAtBlockBoundary = function ( range, root ) {
     return !contentWalker.nextNode();
 };
 
-var expandRangeToBlockBoundaries = function ( range, root ) {
+export function expandRangeToBlockBoundaries ( range, root ) {
     var start = getStartBlockOfRange( range, root ),
         end = getEndBlockOfRange( range, root ),
         parent;

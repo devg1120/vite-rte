@@ -493,7 +493,7 @@ function mergeWithBlock ( block, next, range, root ) {
     mergeInlines( block, range );
 }
 
-function mergeContainers ( node, root ) {
+export function mergeContainers ( node, root ) {
     var prev = node.previousSibling,
         first = node.firstChild,
         doc = node.ownerDocument,

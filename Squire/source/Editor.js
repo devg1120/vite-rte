@@ -47,7 +47,8 @@ import {
 	getNearest,
 	split,
 	hasTagAttributes,
-
+        getBlockWalker,
+	mergeContainers,
                     } from './Node';
 
 import {
@@ -58,6 +59,19 @@ import {
 import {
 	insertNodeInRange,
 	isNodeContainedInRange,
+	expandRangeToBlockBoundaries,
+	rangeDoesEndAtBlockBoundary,
+	rangeDoesStartAtBlockBoundary,
+	getEndBlockOfRange,
+	moveRangeBoundaryOutOf,
+	moveRangeBoundariesUpTree,
+	moveRangeBoundariesDownTree,
+	insertTreeFragmentIntoRange,
+	deleteContentsOfRange,
+	extractContentsOfRange,
+	getNodeAfter,
+	getNodeBefore,
+
                     } from './Range';
 import {
 	TreeWalker,

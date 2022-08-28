@@ -98,10 +98,58 @@ const changeColor = (e) => {
 	//console.log(c);
         editor["setTextColour"](c);
 };
+
+const setColor = (e) => {
+    const action = e.currentTarget.id;
+    editor["setTextColour"](action);
+	/*
+    if (action == "red") {
+        editor["setTextColour"]("red");
+    } else if (action == "red") {
+    } else if (action == "red") {
+    } else if (action == "red") {
+    }
+    */
+};
+
+/*
+ * proto.bold = command( 'changeFormat', { tag: 'B' } );
+ * proto.italic = command( 'changeFormat', { tag: 'I' } );
+ * proto.underline = command( 'changeFormat', { tag: 'U' } );
+ * proto.strikethrough = command( 'changeFormat', { tag: 'S' } );
+ * proto.subscript = command( 'changeFormat', { tag: 'SUB' }, { tag: 'SUP' } );
+ * proto.superscript = command( 'changeFormat', { tag: 'SUP' }, { tag: 'SUB' } );
+ * 
+ * proto.removeBold = command( 'changeFormat', null, { tag: 'B' } );
+ * proto.removeItalic = command( 'changeFormat', null, { tag: 'I' } );
+ * proto.removeUnderline = command( 'changeFormat', null, { tag: 'U' } );
+ * proto.removeStrikethrough = command( 'changeFormat', null, { tag: 'S' } );
+ * proto.removeSubscript = command( 'changeFormat', null, { tag: 'SUB' } );
+ * proto.removeSuperscript = command( 'changeFormat', null, { tag: 'SUP' } );
+ * proto.makeLink = function ( url, attributes ) {
+ * proto.removeLink = function () {
+ * proto.setFontFace = function ( name ) 
+ * proto.setFontSize = function ( size ) 
+ * proto.setTextColour = function ( colour ) 
+ * proto.setHighlightColour = function ( colour ) 
+ * proto.setTextAlignment = function ( alignment ) 
+ * proto.setTextDirection = function ( direction ) 
+ * var addPre = function ( frag ) {
+ * var removePre = function ( frag ) {
+ * proto.code = function () 
+ * proto.removeCode = function () {
+ *
+ */
+
 document.getElementById('bold').addEventListener('click', changeActive);
 document.getElementById('italic').addEventListener('click', changeActive);
 document.getElementById('underline').addEventListener('click', changeActive);
 document.getElementById('makeOrderedList').addEventListener('click', changeActive);
 //document.getElementById('setTextColour').addEventListener('click', changeColor);
 document.getElementById('colorBox').addEventListener('input', changeColor);
+
+document.getElementById('red').addEventListener('click', setColor);
+document.getElementById('blue').addEventListener('click', setColor);
+document.getElementById('green').addEventListener('click', setColor);
+document.getElementById('yellow').addEventListener('click', setColor);
 
