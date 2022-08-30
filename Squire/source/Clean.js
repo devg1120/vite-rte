@@ -14,9 +14,29 @@ import {
         TreeWalker,
                     } from './TreeWalker';
 import {
+        leafNodeNames,
+        //nodeCategoryCache,
+        createElement,
+        empty,
+        fixContainer,
+        getNextBlock,
+        fixCursor,
+        detach,
+        getLength,
+        replaceWith,
+        mergeInlines,
+        getPath,
+        isLeaf,
         isInline,
-	isLeaf,
+        getNodeCategory,
+        isOrContains,
+        getNearest,
+        split,
+        hasTagAttributes,
+        getBlockWalker,
+        mergeContainers,
                     } from './Node';
+
 
 var fontSizes = {
     1: 10,

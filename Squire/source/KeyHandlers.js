@@ -8,6 +8,8 @@ import {
 
 import {
 	getStartBlockOfRange,
+	rangeDoesStartAtBlockBoundary,
+	deleteContentsOfRange,
        } from './Range';
 
 import {
@@ -28,6 +30,10 @@ import {
 	isEmptyBlock,
 	fixCursor,
 	getLength,
+	isInline,
+	fixContainer,
+	getPreviousBlock,
+	mergeWithBlock,
        } from './Node';
 
 var keys = {

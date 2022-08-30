@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+	    https://googlefonts.github.io/japanese/
+    -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+
     <title>Vite App</title>
   </head>
   <body>
@@ -28,9 +36,32 @@
                         <div class="item" id="yellow"  style="background-color:yellow "><i class="fa fa-underline"></i></div>
                     </div>
                     <div class="group">
+                        <div class="item" id="fontname"     style="background-color:red "><i class="fa fa-bold"></i></div>
+                        <div class="item" id="fontsize"    style="background-color:blue "><i class="fa fa-italic"></i></div>
+                    </div>
+                    <div class="group">
                         <div class="item" id="makeOrderedList"><i class="fa fa-list"></i></div>
                     </div>
                 </div>
+<p>選択した色 <span id="span1"></span></p>
+<form name="form1">
+	<select name="color">
+	    <option value="red">赤</option>
+	    <option value="yellow">黄</option>
+	    <option value="blue">青</option>
+	</select>
+</form>
+<input type="button" value="ボタン1" onclick="clickBtn1()"/>
+<p>選択したフォント <span id="span1"></span></p>
+<form name="form2">
+	<select name="font">
+	    <option value="Noto Sans JP">Noto Sans JP</option>
+	    <option value="Nico Moji">Nico Moji</option>
+	    <option value="M PLUS 1p">M PLUS 1p</option>
+	    <option value="M+ Type-2">M+ Type-2</option>
+	</select>
+</form>
+<input type="button" id="fontsel" value="ボタン1" />
                 <div id="editor"></div>
             </div>
         </div>

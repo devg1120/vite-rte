@@ -112,6 +112,21 @@ const setColor = (e) => {
     */
 };
 
+const setFontName = (e) => {
+        //const c = e.currentTarget.value;
+	//console.log(c);
+        editor["setFontFace"]("Noto Sans JP");
+	//https://ics.media/entry/13498/
+	//Noto Sans JP
+	//源ノ角ゴシック
+	//みんなの文字
+	//M+ Type-2
+};
+const setFontSize = (e) => {
+        //const c = e.currentTarget.value;
+	//console.log(c);
+        editor["setFontSize"](30);
+};
 /*
  * proto.bold = command( 'changeFormat', { tag: 'B' } );
  * proto.italic = command( 'changeFormat', { tag: 'I' } );
@@ -153,3 +168,20 @@ document.getElementById('blue').addEventListener('click', setColor);
 document.getElementById('green').addEventListener('click', setColor);
 document.getElementById('yellow').addEventListener('click', setColor);
 
+document.getElementById('fontname').addEventListener('click', setFontName);
+document.getElementById('fontsize').addEventListener('click', setFontSize);
+document.getElementById('fontsel').addEventListener('click', clickBtn2);
+
+function clickBtn2(){
+
+	const font = document.form2.font;
+
+	// 値(数値)を取得
+	const num = font.selectedIndex;
+	//const num = document.form1.color1.selectedIndex;
+
+	// 値(数値)から値(value値)を取得
+	const str = font.options[num].value;
+	console.log(str);
+        editor["setFontFace"](str);
+}

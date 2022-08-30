@@ -1,5 +1,57 @@
 /*jshint strict:false, undef:false, unused:false */
 
+import {
+        canObserveMutations,
+        canWeakMap,
+        notWS,
+        DOCUMENT_POSITION_PRECEDING,
+        indexOf,
+        TEXT_NODE,
+        isWin,
+        isIOS,
+        isIE,
+        isEdge,
+        SHOW_TEXT,
+        ZWS,
+        SHOW_ELEMENT,
+        cantFocusEmptyTextNodes,
+                    } from './Constants';
+
+import {
+        getStartBlockOfRange,
+	getEndBlockOfRange,
+	moveRangeBoundariesDownTree,
+	moveRangeBoundariesUpTree,
+                    } from './Range';
+import {
+        cleanupBRs,
+                    } from './Clean';
+
+import {
+        leafNodeNames,
+        //nodeCategoryCache,
+        createElement,
+        empty,
+        fixContainer,
+        getNextBlock,
+        fixCursor,
+        detach,
+        getLength,
+        replaceWith,
+        mergeInlines,
+        getPath,
+        isLeaf,
+        isInline,
+        getNodeCategory,
+        isOrContains,
+        getNearest,
+        split,
+        hasTagAttributes,
+        getBlockWalker,
+        mergeContainers,
+                    } from './Node';
+
+
 // The (non-standard but supported enough) innerText property is based on the
 // render tree in Firefox and possibly other browsers, so we must insert the
 // DOM node into the document to ensure the text part is correct.

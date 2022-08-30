@@ -12,6 +12,8 @@ import {
 	END_TO_START,
 	START_TO_END,
 	START_TO_START,
+	END_TO_END,
+	ELEMENT_NODE,
                     } from './Constants';
 
 import {
@@ -24,7 +26,20 @@ import {
 	getPreviousBlock,
 	split,
 	fixCursor,
+	fixContainer,
+	getNextBlock,
+	isLeaf,
+	getLength,
+	mergeWithBlock,
+	isEmptyBlock,
+	isOrContains,
+	detach,
+	isContainer,
                     } from './Node';
+
+import {
+        cleanupBRs,
+                    } from './Clean';
 
 export function getNodeBefore ( node, offset ) {
     var children = node.childNodes;

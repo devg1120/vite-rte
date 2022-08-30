@@ -8,11 +8,18 @@ import {
 	DOCUMENT_FRAGMENT_NODE,
 	SHOW_ELEMENT,
 	indexOf,
+	cantFocusEmptyTextNodes,
+	ZWS,
                     } from './Constants';
 
 import {
         TreeWalker,
                     } from './TreeWalker';
+
+import {
+        removeEmptyInlines ,
+                    } from './Clean';
+
 
 var inlineNodeNames  = /^(?:#text|A(?:BBR|CRONYM)?|B(?:R|D[IO])?|C(?:ITE|ODE)|D(?:ATA|EL|FN)|EM|FONT|HR|I(?:FRAME|MG|NPUT|NS)?|KBD|Q|R(?:P|T|UBY)|S(?:AMP|MALL|PAN|TR(?:IKE|ONG)|U[BP])?|TIME|U|VAR|WBR)$/;
 
@@ -466,7 +473,7 @@ export function mergeInlines ( node, range ) {
     }
 }
 
-function mergeWithBlock ( block, next, range, root ) {
+export function mergeWithBlock ( block, next, range, root ) {
     var container = next;
     var parent, last, offset;
     while ( ( parent = container.parentNode ) &&

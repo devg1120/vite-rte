@@ -9,6 +9,7 @@ import {
 	isWin,
 	isIOS,
 	isIE,
+	isEdge,
 	SHOW_TEXT,
 	ZWS,
 	SHOW_ELEMENT,
@@ -42,6 +43,7 @@ import {
 	getPath,
 	isLeaf,
 	isInline,
+	isBlock,
 	getNodeCategory,
 	isOrContains,
 	getNearest,
@@ -54,6 +56,7 @@ import {
 import {
 	cleanTree,
 	cleanupBRs,
+	removeEmptyInlines,
                     } from './Clean';
 
 import {
