@@ -29,11 +29,21 @@
 				-->
 			</div>
                     </div>
+                    <div class="group"> 
+			    <div>txt color</div>
+                        <div class="item" id="red"     style="background-color:red "></div>
+                        <div class="item" id="blue"    style="background-color:blue "></div>
+                        <div class="item" id="green"   style="background-color:green "></div>
+                        <div class="item" id="yellow"  style="background-color:yellow "></div>
+                        <div class="item" id="white"  style="background-color:white "></div>
+                    </div>
                     <div class="group">
-                        <div class="item" id="red"     style="background-color:red "><i class="fa fa-bold"></i></div>
-                        <div class="item" id="blue"    style="background-color:blue "><i class="fa fa-italic"></i></div>
-                        <div class="item" id="green"   style="background-color:green "><i class="fa fa-underline"></i></div>
-                        <div class="item" id="yellow"  style="background-color:yellow "><i class="fa fa-underline"></i></div>
+			    <div>bg color</div>
+                        <div class="item" id="bg_red"     style="background-color:red "></div>
+                        <div class="item" id="bg_blue"    style="background-color:blue "></div>
+                        <div class="item" id="bg_green"   style="background-color:green "></div>
+                        <div class="item" id="bg_yellow"  style="background-color:yellow "></div>
+                        <div class="item" id="bg_white"  style="background-color:white "></div>
                     </div>
                     <div class="group">
                         <div class="item" id="fontname"     style="background-color:red "><i class="fa fa-bold"></i></div>
@@ -45,13 +55,14 @@
                 </div>
 <p>選択した色 <span id="span1"></span></p>
 <form name="form1">
-	<select name="color">
-	    <option value="red">赤</option>
-	    <option value="yellow">黄</option>
-	    <option value="blue">青</option>
+	<select id="select_color" name="color">
+	    <option value="red" style="background-color:red">赤</option>
+	    <option value="yellow" style="background-color:yellow">黄</option>
+	    <option value="blue" style="background-color:blue">青</option>
 	</select>
 </form>
-<input type="button" value="ボタン1" onclick="clickBtn1()"/>
+<input type="button" id="colorsel" value="色" />
+
 <p>選択したフォント <span id="span1"></span></p>
 <form name="form2">
 	<select name="font">
@@ -61,11 +72,24 @@
 	    <option value="M+ Type-2">M+ Type-2</option>
 	</select>
 </form>
-<input type="button" id="fontsel" value="ボタン1" />
-                <div id="editor"></div>
-            </div>
-        </div>
-        </div>
+<input type="button" id="fontsel" value="フォント" />
+
+
+
+
+<p>スピンボタン </p>
+
+<div class="p-qty js-qty">
+  <div class="__arrow __up js-qty_up"></div>
+  <div class="__arrow __down js-qty_down"></div>
+  <input id="spin_font_size" type="number" class="p-qty__input js-qty_target" value="1">
+</div>
+<input type="button" id="fontsizesel" value="フォントサイズ" />
+
+<div id="editor"></div>
+</div>
+</div>
+</div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

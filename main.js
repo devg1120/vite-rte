@@ -99,6 +99,12 @@ const changeColor = (e) => {
         editor["setTextColour"](c);
 };
 
+const changeBgColor = (e) => {
+	//var c = colorPicker.value;
+        const c = e.currentTarget.value;
+	//console.log(c);
+        editor["setHighlightColour"](c);
+};
 const setColor = (e) => {
     const action = e.currentTarget.id;
     editor["setTextColour"](action);
@@ -112,6 +118,19 @@ const setColor = (e) => {
     */
 };
 
+const setBgColor = (e) => {
+    const action = e.currentTarget.id;
+    let param = action.split('_');
+    editor["setHighlightColour"](param[1]);
+	/*
+    if (action == "red") {
+        editor["setTextColour"]("red");
+    } else if (action == "red") {
+    } else if (action == "red") {
+    } else if (action == "red") {
+    }
+    */
+};
 const setFontName = (e) => {
         //const c = e.currentTarget.value;
 	//console.log(c);
@@ -167,11 +186,68 @@ document.getElementById('red').addEventListener('click', setColor);
 document.getElementById('blue').addEventListener('click', setColor);
 document.getElementById('green').addEventListener('click', setColor);
 document.getElementById('yellow').addEventListener('click', setColor);
+document.getElementById('white').addEventListener('click', setColor);
+
+document.getElementById('bg_red').addEventListener('click', setBgColor);
+document.getElementById('bg_blue').addEventListener('click', setBgColor);
+document.getElementById('bg_green').addEventListener('click', setBgColor);
+document.getElementById('bg_yellow').addEventListener('click', setBgColor);
+document.getElementById('bg_white').addEventListener('click', setBgColor);
 
 document.getElementById('fontname').addEventListener('click', setFontName);
 document.getElementById('fontsize').addEventListener('click', setFontSize);
+document.getElementById('colorsel').addEventListener('click', clickBtn1);
 document.getElementById('fontsel').addEventListener('click', clickBtn2);
 
+document.getElementById('select_color').addEventListener('change', change_color);
+document.getElementById('fontsizesel').addEventListener('click', change_font_size);
+
+change_color();
+
+function change_color(){
+
+	console.log("change color");
+	const color = document.form1.color;
+
+	// 値(数値)を取得
+	const num = color.selectedIndex;
+	//const num = document.form1.color1.selectedIndex;
+
+	// 値(数値)から値(value値)を取得
+	const str = color.options[num].value;
+        //document.getElementById('select_color').classList.remove('red blue green yellow').classList.add(str);
+        color.classList.remove('red');
+        color.classList.remove('blue');
+        color.classList.remove('green');
+        color.classList.remove('yellow');
+        color.classList.add(str);
+
+}
+
+function change_font_size(){
+
+	console.log("change font size");
+        let spin_font_size = document.getElementById('spin_font_size');
+	console.log(spin_font_size.value);
+	let size = parseInt(spin_font_size.value);
+       //editor["setFontSize"](spin_font_size.value);
+       editor["setFontSize"](size);
+
+
+}
+function clickBtn1(){
+
+	const color = document.form1.color;
+
+	// 値(数値)を取得
+	const num = color.selectedIndex;
+	//const num = document.form1.color1.selectedIndex;
+
+	// 値(数値)から値(value値)を取得
+	const str = color.options[num].value;
+	console.log(str);
+        editor["setTextColour"](str);
+}
 function clickBtn2(){
 
 	const font = document.form2.font;
@@ -185,3 +261,51 @@ function clickBtn2(){
 	console.log(str);
         editor["setFontFace"](str);
 }
+
+// SPIN BUTTON
+//vanilla jsで親要素探索する用の関数
+function getParents(el, parentSelector /* optional */) {
+    if (parentSelector === undefined) {
+        return false;
+    }
+
+    var p = el.parentNode;
+
+    while (!p.classList.contains(parentSelector)) {
+        var o = p;
+        p = o.parentNode;
+    }
+    return p;
+}
+
+
+
+document.addEventListener('click',function(e){
+  e = e || window.event;
+  var target = e.target || e.srcElement,
+      text = target.textContent || target.innerText;
+
+  var val = 0;
+
+  //クリックしたDOMが.js-qty_upだったら
+  if(target.classList.contains('js-qty_up')){
+    val = 1;
+  } else if(target.classList.contains('js-qty_down')) {
+    val = -1;
+  } else {
+    return false;
+  }
+  var parent = getParents(target,'js-qty');//親の.js-qtyを取得して
+  var input = parent.querySelectorAll('.js-qty_target');//親の.js-qtyの子の.js-qty_targetを取得して
+  //Nodelistを回す
+  for (let i = 0; i < input.length; i++) {
+    if(input[i].classList.contains('js-qty_target')){
+      //.js-qty_target持ってるDOMに対して
+      var num = parseInt(input[i].value);
+      num = isNaN(num) ? 1 : num;
+      input[i].value = num + val < 1 ? 1 : num + val;
+    }
+  }
+
+},false);
+

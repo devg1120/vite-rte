@@ -3,6 +3,61 @@ body {
   font-family: 'Helvetica', sans-serif !important;
 }
 
+.red{  background-Color: red;}
+.blue{  background-Color: blue;}
+.green{  background-Color:green;}
+.yellow{  background-Color:yellow;}
+
+/* SPIN BUTTON*/
+/* デフォルトの装飾は消しておく */
+/* Chrome/Safari */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.p-qty {
+  position: relative;
+  display: inline-block;
+}
+.p-qty > .__arrow {
+  position: absolute;
+  top: calc(50% - 9px);
+  right: 10px;
+  transform: translate(0px, -50%);
+  display: inline-block;
+  border-width: 6px 4px;
+  border-style: solid;
+  border-color: transparent transparent rgb(0, 0, 0);
+  cursor: pointer;
+}
+.p-cart_detail .p-qty > .__arrow {
+  top: calc(50% - 7px);
+  border-width: 5px 3px;
+  border-style: solid;
+  border-color: transparent transparent rgb(0, 0, 0);
+}
+.p-qty > .__arrow.__down {
+  top: calc(50% + 9px);
+  border-bottom: 6px solid transparent;
+  border-top: 6px solid rgb(0, 0, 0);
+}
+.p-cart_detail .p-qty > .__arrow.__down {
+  border-bottom: 5px solid transparent;
+  border-top: 5px solid rgb(0, 0, 0);
+  top: calc(50% + 7px);
+}
+.p-qty__input {
+  width: 91px;
+  height: 40px;
+  border: 1px solid rgb(112, 112, 112);
+  border-radius: 5px;
+  padding-left: 25px;
+}
+
 .header {
   padding: 50px 0 30px;
   color: #fff;

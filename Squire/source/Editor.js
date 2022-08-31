@@ -2182,6 +2182,7 @@ proto.setTextColour = function ( colour ) {
         attributes: {
             'class': className,
             style: 'color:' + colour
+            //style: 'color:' + 'red'
         }
     } : null, {
         tag: 'SPAN',
