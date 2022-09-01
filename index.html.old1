@@ -84,7 +84,7 @@
   <div class="__arrow __down js-qty_down"></div>
   <input id="spin_font_size" type="number" class="p-qty__input js-qty_target" value="1">
 </div>
-<input type="button" id="select_fontsize" value="フォントサイズ" />
+<input type="button" id="fontsizesel" value="フォントサイズ" />
 
 <div id="editor"></div>
 </div>

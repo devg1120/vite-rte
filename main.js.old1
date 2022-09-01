@@ -200,7 +200,7 @@ document.getElementById('colorsel').addEventListener('click', clickBtn1);
 document.getElementById('fontsel').addEventListener('click', clickBtn2);
 
 document.getElementById('select_color').addEventListener('change', change_color);
-document.getElementById('select_fontsize').addEventListener('click', change_font_size);
+document.getElementById('fontsizesel').addEventListener('click', change_font_size);
 
 change_color();
 
